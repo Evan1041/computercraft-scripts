@@ -16,8 +16,8 @@ local TreeFarm = {}
 
 -- Is there a menril log above the turtle?
 function TreeFarm.is_menril_above()
-  local success, block_data = turtle.inspectUp()
-  return success and block_data and MENRIL_LOG_IDS[block_data.name] or false
+    local success, block_data = turtle.inspectUp()
+    return success and block_data and MENRIL_LOG_IDS[block_data.name] or false
 end
 
 -- Function to check the block in front of the turtle
@@ -39,10 +39,12 @@ end
 
 -- Function to mine in a plus sign pattern from trunk position
 function TreeFarm.mine_layer()
-  turtle.turnLeft();  TreeFarm.dig_menril_log()
-  turtle.turnRight(); TreeFarm.dig_menril_log()
-  turtle.turnRight(); TreeFarm.dig_menril_log()
-  turtle.turnLeft()
+    TreeFarm.dig_menril_log() 
+    for _ = 1, 3 do
+        turtle.turnRight()
+        TreeFarm.dig_menril_log()
+    end
+    turtle.turnRight()
 end
 
 -- Function to select item by item ID
