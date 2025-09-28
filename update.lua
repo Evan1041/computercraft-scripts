@@ -4,7 +4,7 @@
 
 local files = {
   {
-    url  = "https://raw.githubusercontent.com/YOURUSERNAME/computercraft-scripts/main/apps/menril_tree_farm.lua",
+    url  = "https://raw.githubusercontent.com/Evan1041/computercraft-scripts/main/apps/menril_tree_farm.lua",
     path = "menril_tree_farm.lua"
   }
 }
