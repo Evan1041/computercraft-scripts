@@ -45,6 +45,8 @@ function turtle.select(slot) end
 function turtle.getSelectedSlot() end
 ---@param slot integer|nil
 function turtle.getItemCount(slot) end
+---@param slot integer|nil
+function turtle.getItemDetail(slot) end
 ---@param side integer|nil
 function turtle.place(side) end
 _G.turtle = turtle

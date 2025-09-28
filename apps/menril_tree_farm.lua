@@ -45,6 +45,27 @@ function TreeFarm.mine_layer()
   turtle.turnLeft()
 end
 
+-- Function to select item by item ID
+function TreeFarm.select_item(id)
+  for slot = 1, 16 do
+    local detail = turtle.getItemDetail(slot)
+    if detail and detail.name == id then
+      turtle.select(slot)
+      return true
+    end
+  end
+  return false -- not found
+end
+
+-- Function to select and place menril sapling
+-- Assumes turtle is facing air above dirt/grass block
+function TreeFarm.place_sapling()
+    if not TreeFarm.select_item(MENRIL_SAPLING_ID) then
+        return false -- no sapling found
+    end
+    return turtle.place() -- place sapling 
+end
+
 -- Function to harvest trees
 function TreeFarm.harvest_tree()
     -- Mine to tree center
@@ -72,10 +93,18 @@ function TreeFarm.harvest_tree()
         turtle.down()
     end
 
-    -- Return to tree line
-    turtle.turnRight()
-    turtle.turnRight()
+    -- Step one block towards traversal line
+    turtle.turnRight(); turtle.turnRight()
     turtle.forward()
+
+    -- Turn around and plant sapling
+    turtle.turnRight(); turtle.turnRight()
+    if not TreeFarm.place_sapling() then -- Plant sapling
+        print("Warning: No sapling found!")
+    end
+
+    -- Rurn around and return to traversal line
+    turtle.turnRight(); turtle.turnRight()
     turtle.forward()
     turtle.turnLeft()
     return true
@@ -108,7 +137,6 @@ end
 -- Stops when encounters block along path parallel to tree line
 function TreeFarm.traverse_tree_line()
     local distance = 0
-    
     while true do
         -- Check for block in front of turtle
         local success = turtle.inspect() 
