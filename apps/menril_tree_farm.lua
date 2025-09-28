@@ -1,4 +1,4 @@
--- TODO: Replant sapling, pickup item drops on tree base, fuel and inventory management
+-- TODO: fuel and inventory management (maybe seperate module)
 
 -- Block IDs
 local MENRIL_LOG_IDS = {
@@ -93,17 +93,19 @@ function TreeFarm.harvest_tree()
         turtle.down()
     end
 
-    -- Step one block towards traversal line
-    turtle.turnRight(); turtle.turnRight()
-    turtle.forward()
+    -- Collect items from decayed leaves that landed on the tree base
+    turtle.turnLeft();  turtle.suck()
+    turtle.turnRight(); turtle.suck()
+    turtle.turnRight(); turtle.suck()
+    turtle.turnRight(); turtle.suck(); turtle.forward()
+    turtle.turnRight(); turtle.turnRight(); turtle.suck()
 
-    -- Turn around and plant sapling
-    turtle.turnRight(); turtle.turnRight()
+    -- Plant sapling
     if not TreeFarm.place_sapling() then -- Plant sapling
         print("Warning: No sapling found!")
     end
 
-    -- Rurn around and return to traversal line
+    -- Turn around and return to traversal line
     turtle.turnRight(); turtle.turnRight()
     turtle.forward()
     turtle.turnLeft()
@@ -139,7 +141,7 @@ function TreeFarm.traverse_tree_line()
     local distance = 0
     while true do
         -- Check for block in front of turtle
-        local success = turtle.inspect() 
+        local success = turtle.detect() 
         if success then break end -- end harvest
 
         -- Check for tree on left side and harvest if found

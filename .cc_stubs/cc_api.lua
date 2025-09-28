@@ -33,7 +33,15 @@ function turtle.digUp() end
 ---@return boolean
 function turtle.digDown() end
 
+-- Detect functions return true/false
+---@return boolean
+function turtle.detect() end
+---@return boolean
+function turtle.detectUp() end
+---@return boolean
+function turtle.detectDown() end
 
+function turtle.suck() end
 ---@param count integer|nil
 function turtle.refuel(count) end
 ---@param side integer|nil  -- 0=front,1=up,2=down
