@@ -10,6 +10,9 @@ function turtle.down() end
 function turtle.turnLeft() end
 function turtle.turnRight() end
 function turtle.getFuelLevel() end
+function turtle.inspect() end
+function turtle.inspectUp() end
+function turtle.digUp() end
 ---@param count integer|nil
 function turtle.refuel(count) end
 ---@param side integer|nil  -- 0=front,1=up,2=down
