@@ -4,12 +4,9 @@
 
 local files = {
   {
-    -- CHANGE THIS to your raw URL:
-    url  = "https://raw.githubusercontent.com/YOURUSER/YOURREPO/main/apps/menril_tree_farm.lua",
+    url  = "https://raw.githubusercontent.com/YOURUSERNAME/computercraft-scripts/main/apps/menril_tree_farm.lua",
     path = "menril_tree_farm.lua"
-  },
-  -- add more files as needed:
-  -- { url = "https://raw.githubusercontent.com/YOURUSER/YOURREPO/main/lib/util.lua", path = "lib/util.lua" },
+  }
 }
 
 local function fetch(u)
