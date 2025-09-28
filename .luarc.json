@@ -1,0 +1,19 @@
+﻿{
+  "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
+  "Lua.runtime.version": "Lua 5.1",
+  "Lua.runtime.nonstandardSymbol": ["//", "/*", "*/", "+="],
+  "Lua.diagnostics.globals": [
+    "turtle","peripheral","rednet","fs","term","textutils","http","os","keys",
+    "colors","paintutils","shell","settings","parallel","vector","gps","bit",
+    "sleep"
+  ],
+  "Lua.workspace.checkThirdParty": false,
+  "Lua.workspace.library": [
+    "${workspaceFolder}/.cc_stubs"
+  ],
+  "Lua.completion.callSnippet": "Replace",
+  "Lua.format.defaultConfig": {
+    "indent_style": "space",
+    "indent_size": "2"
+  }
+}
