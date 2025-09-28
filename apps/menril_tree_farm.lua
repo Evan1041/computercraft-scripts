@@ -1,3 +1,5 @@
+-- TODO: Replant sapling, pickup item drops on tree base, fuel and inventory management
+
 -- Block IDs
 local MENRIL_LOG_IDS = {
   -- Replace with your real IDs (examples shown):
@@ -12,11 +14,10 @@ local TREE_SPACING = 5
 -- Table of farming functions
 local TreeFarm = {}
 
--- Is there a menril log **above** the turtle?
+-- Is there a menril log above the turtle?
 function TreeFarm.is_menril_above()
   local success, block_data = turtle.inspectUp()
-  if not success then return false end
-  return MENRIL_LOG_IDS[block_data.name] or false
+  return success and block_data and MENRIL_LOG_IDS[block_data.name] or false
 end
 
 -- Function to check the block in front of the turtle
@@ -24,8 +25,7 @@ end
 -- Returns true if a menril log (empty or filled)
 function TreeFarm.is_facing_menril_log()
     local success, block_data = turtle.inspect() 
-    if not success then return false end
-    return MENRIL_LOG_IDS[block_data.name] or false
+    return success and block_data and MENRIL_LOG_IDS[block_data.name] or false
 end
 
 -- Function to mine only menril logs

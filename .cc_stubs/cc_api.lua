@@ -1,4 +1,6 @@
-﻿---@meta
+﻿-- TODO: unify stubs with a defined turtle class with field types
+
+---@meta
 -- Minimal ComputerCraft/Turtle API stubs for IntelliSense (not for execution)
 
 ---@class Turtle
@@ -10,9 +12,28 @@ function turtle.down() end
 function turtle.turnLeft() end
 function turtle.turnRight() end
 function turtle.getFuelLevel() end
+
+-- Inspect functions return true/false and block data if present (outputs are coupled)
+---@alias BlockData { name: string, state?: table, tags?: table }
+---@overload fun(): false, nil
+---@return true, BlockData
 function turtle.inspect() end
+---@overload fun(): false, nil
+---@return true, BlockData
 function turtle.inspectUp() end
+---@overload fun(): false, nil
+---@return true, BlockData
+function turtle.inspectDown() end
+
+-- Dig functions return true/false
+---@return boolean
+function turtle.dig() end
+---@return boolean
 function turtle.digUp() end
+---@return boolean
+function turtle.digDown() end
+
+
 ---@param count integer|nil
 function turtle.refuel(count) end
 ---@param side integer|nil  -- 0=front,1=up,2=down
