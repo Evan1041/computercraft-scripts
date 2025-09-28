@@ -25,12 +25,32 @@ function turtle.getItemCount(slot) end
 function turtle.place(side) end
 _G.turtle = turtle
 
+---@class CCFileHandle
+---@field write fun(self:CCFileHandle, text:string)
+---@field writeLine fun(self:CCFileHandle, text:string)
+---@field close fun(self:CCFileHandle)
+---@field flush fun(self:CCFileHandle)
+
 local fs = {}
+
+---@param path string
+---@return boolean
 function fs.exists(path) end
+
+---@param path string
+---@return boolean
 function fs.isDir(path) end
+
+---@param path string
 function fs.makeDir(path) end
+
+---@param path string
+---@param mode '"r"'|'"w"'|'"a"'|'"rb"'|'"wb"'
+---@return CCFileHandle|nil
 function fs.open(path, mode) end
+
 _G.fs = fs
+
 
 local http = {}
 function http.get(url, body, headers, binary) end
